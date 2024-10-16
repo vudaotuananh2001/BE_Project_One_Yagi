@@ -79,5 +79,26 @@ namespace API_BTN.Controllers
                 }
             }
         }
+
+        [HttpGet("search={url}")]
+        public async Task<IActionResult> GetBySearchUrl(string url)
+        {
+            try
+            {
+                var list = _inforService.GetInforBySearchUrl(url);
+                if (list == null)
+                {
+                    return NotFound();
+                }
+                return Ok(new
+                {
+                    data = list
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }

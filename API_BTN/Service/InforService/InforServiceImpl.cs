@@ -48,5 +48,22 @@ namespace API_BTN.Service.InforService
             }
             throw new NotImplementedException();
         }
+        public List<Information_Details> GetInforBySearchUrl(string url)
+        {
+            try
+            {
+                List<Information_Details> list = _inforRepository.GetListInforByUrl(url);
+                if (list == null)
+                {
+                    return null;
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
     }
 }

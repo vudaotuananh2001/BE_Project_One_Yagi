@@ -49,7 +49,22 @@ namespace API_BTN.Repository.InforRepository
 
             }
         }
-
+        public List<Information_Details> GetListInforByUrl(string url)
+        {
+            try
+            {
+                List<Information_Details> list = _applicationDbContext.Information.Where(inforxx => inforxx.linkTitle.Contains(url)).ToList();
+                if (list == null)
+                {
+                    return null;
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Có lỗi xảy ra khi lấy dữ liệu thông tin." + ex); // Cung cấp thông tin về lỗi
+            }
+        }
 
     }
 }
